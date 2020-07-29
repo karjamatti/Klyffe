@@ -42,12 +42,12 @@ bizdays.options$set(default.calendar = "Std_cal")
 
 match.df <- data # Copy data into new df
 
-# Match Previous business day returns (MSCI World)
+# Match Previous business day returns
 match.df$Return_minus1 <- match(interaction(match.df$Date %>% bizdays::offset(., -1), match.df$Ticker), 
                                 interaction(data$Date, data$Ticker)) %>%
   data$Return[.]
 
-# Match Next business day returns (MSCI World)
+# Match Next business day returns
 match.df$Return_plus1 <- match(interaction(match.df$Date %>% bizdays::offset(., +1), match.df$Ticker), 
                                 interaction(data$Date, data$Ticker)) %>%
   data$Return[.]
